@@ -12,6 +12,8 @@
         <module>sample-test-project-poi5x</module>
         <module>excel-center-common</module>
         <module>sample-test-project-easyexcel</module>
+        <module>excel-center-spi</module>
+        <module>excel-center-core</module>
     </modules>
 
 
@@ -24,6 +26,9 @@
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
         <lombok.version>1.18.24</lombok.version>
         <commons-lang3.version>3.1</commons-lang3.version>
+        <guava.version>31.1-jre</guava.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-io.version>2.7</commons-io.version>
     </properties>
 
     <dependencies>
@@ -36,6 +41,21 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -71,6 +91,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
