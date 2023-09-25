@@ -12,7 +12,6 @@ import java.util.concurrent.locks.StampedLock;
 /**
  * 简单缓存，无超时实现，使用{@link WeakHashMap}实现缓存自动清理MyCharUtils@param <K> 键类型
  * @param <V> 值类型
- * @author lingyi
  */
 public class SimpleCache<K, V> implements Serializable {
     private static final long serialVersionUID = 1L;

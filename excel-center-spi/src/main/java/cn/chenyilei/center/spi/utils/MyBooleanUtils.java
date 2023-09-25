@@ -4,7 +4,7 @@ package cn.chenyilei.center.spi.utils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Boolean类型相关工具类MyCharUtils@author lingyi
+ * Boolean类型相关工具类MyCharUtils
  */
 public class MyBooleanUtils {
 

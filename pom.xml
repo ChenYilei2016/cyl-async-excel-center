@@ -9,11 +9,13 @@
     <packaging>pom</packaging>
     <modules>
         <module>sample-test-project</module>
-        <module>sample-test-project-poi5x</module>
         <module>excel-center-common</module>
         <module>sample-test-project-easyexcel</module>
         <module>excel-center-spi</module>
         <module>excel-center-core</module>
+        <module>excel-center-start</module>
+        <module>excel-center-domain</module>
+        <module>excel-center-infrastructure</module>
     </modules>
 
 

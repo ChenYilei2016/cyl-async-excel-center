@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Type的工具类封装MyCharUtils@author lingyi
+ * Type的工具类封装MyCharUtils
  */
 public class MyTypeUtils {
 

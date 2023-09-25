@@ -29,6 +29,13 @@ import java.util.regex.Pattern;
 
 import static java.util.Collections.sort;
 
+/**
+ * auto inject dependency extension
+ * auto wrap extension in wrapper
+ * default extension is an adaptive instance
+ *
+ * 懂的都懂
+ */
 public class ExtensionLoader<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(ExtensionLoader.class);
