@@ -1,6 +1,6 @@
 package cn.chenyilei.aec.domain.oss;
 
-import java.io.File;
+import java.io.InputStream;
 
 /**
  * @author chenyilei
@@ -11,7 +11,11 @@ public interface AecOssService {
     /**
      * downloadExcel
      */
-    File download(String url);
+    InputStream download(String url);
 
-//    public
+
+    /**
+     * upload
+     */
+    void upload(String path, InputStream inputStream);
 }

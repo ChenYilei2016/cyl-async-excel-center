@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "aec.oss")
-public class AecOssConfig {
+public class AecOssConfigProperties {
 
     @NestedConfigurationProperty
     private AliyunOss aliyunOss = new AliyunOss();
@@ -26,11 +26,30 @@ public class AecOssConfig {
     @Getter
     @Setter
     public static class AliyunOss {
-
+        /**
+         * 访问key
+         */
+        private String accessKeyId;
+        /**
+         * 访问秘钥
+         */
+        private String accessKeySecret;
+        /**
+         * 站点
+         */
+        private String endpoint = "https://oss-cn-hangzhou.aliyuncs.com";
+        /**
+         * 桶名称
+         */
+        private String bucketName = "async-excel-center";
     }
+
     @Getter
     @Setter
     public static class Local {
+        /**
+         * 本地基础路径
+         */
         private String basePath;
     }
 
