@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "aec.oss")
 public class AecOssConfigProperties {
 
+    public static final String BUCKET_NAME_KEY = "BUCKET_NAME_KEY";
+
     @NestedConfigurationProperty
     private AliyunOss aliyunOss = new AliyunOss();
 

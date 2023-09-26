@@ -1,4 +1,4 @@
-package cn.chenyilei.aec.domain.file.excel;
+package cn.chenyilei.aec.domain.excel;
 
 /**
  * @author chenyilei

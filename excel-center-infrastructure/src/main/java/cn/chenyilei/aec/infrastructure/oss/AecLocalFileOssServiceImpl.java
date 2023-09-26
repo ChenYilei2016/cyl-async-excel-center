@@ -3,9 +3,9 @@ package cn.chenyilei.aec.infrastructure.oss;
 import cn.chenyilei.aec.domain.oss.AecOssService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.InitializingBean;
 
 import java.io.*;
+import java.util.Map;
 
 /**
  * @author chenyilei
@@ -31,7 +31,7 @@ public class AecLocalFileOssServiceImpl implements AecOssService {
     }
 
     @Override
-    public FileInputStream download(String url) {
+    public FileInputStream download(String url, Map<String, Object> runtimeParams) {
         String filePath = basePath + url;
         File file = new File(filePath);
 
@@ -46,7 +46,7 @@ public class AecLocalFileOssServiceImpl implements AecOssService {
     }
 
     @Override
-    public void upload(String path, InputStream inputStream) {
+    public void upload(String path, InputStream inputStream, Map<String, Object> runtimeParams) {
         String filePath = basePath + path;
         File file = new File(filePath);
 
@@ -62,6 +62,27 @@ public class AecLocalFileOssServiceImpl implements AecOssService {
             throw new IllegalStateException(e);
         } finally {
             IOUtils.closeQuietly(downloadFile, null);
+        }
+    }
+
+    @Override
+    public void remove(String path, Map<String, Object> runtimeParams) {
+        String filePath = basePath + path;
+        File file = new File(filePath);
+        if (!file.exists() || !file.isFile()) {
+            return;
+        }
+        file.delete();
+    }
+
+    @Override
+    public boolean exists(String path, Map<String, Object> runtimeParams) {
+        String filePath = basePath + path;
+        File file = new File(filePath);
+        if (!file.exists() || !file.isFile()) {
+            return false;
+        } else {
+            return true;
         }
     }
 

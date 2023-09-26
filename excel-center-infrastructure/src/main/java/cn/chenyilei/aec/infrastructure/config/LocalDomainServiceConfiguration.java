@@ -25,4 +25,5 @@ public class LocalDomainServiceConfiguration {
     public AecLocalFileOssServiceImpl aecOssService(AecOssConfigProperties aecOssConfigProperties){
         return new AecLocalFileOssServiceImpl(aecOssConfigProperties.getLocal().getBasePath());
     }
+
 }

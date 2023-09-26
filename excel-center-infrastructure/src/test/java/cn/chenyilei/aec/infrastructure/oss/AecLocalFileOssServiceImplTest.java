@@ -20,12 +20,12 @@ public class AecLocalFileOssServiceImplTest {
     @org.junit.Test
     public void save() throws FileNotFoundException {
         CharSequenceInputStream hello = new CharSequenceInputStream("hello", Charset.defaultCharset());
-        aecLocalFileOssService.upload("a.txt", hello);
+        aecLocalFileOssService.upload("a.txt", hello, null);
     }
 
     @org.junit.Test
     public void download() throws IOException {
-        FileInputStream download = aecLocalFileOssService.download("a.txt");
+        FileInputStream download = aecLocalFileOssService.download("a.txt", null);
 
         System.err.println(download);
 
