@@ -1,4 +1,0 @@
-adaptive=cn.chenyilei.center.spi.compiler.support.AdaptiveCompiler
-jdk=cn.chenyilei.center.spi.compiler.support.JdkCompiler
-javassist=cn.chenyilei.center.spi.compiler.support.JavassistCompiler
-byteBuddy=cn.chenyilei.center.spi.compiler.support.ByteBuddyCompiler

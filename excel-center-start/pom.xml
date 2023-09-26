@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.chenyilei</groupId>
-        <artifactId>cyl-async-excel-center</artifactId>
+        <artifactId>async-excel-center</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -22,5 +22,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.chenyilei</groupId>
+            <artifactId>excel-center-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins></plugins>
+    </build>
 </project>

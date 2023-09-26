@@ -1,0 +1,3 @@
+adaptive=cn.chenyilei.aec.spi.factory.AdaptiveExtensionFactory
+spi=cn.chenyilei.aec.spi.factory.SpiExtensionFactory
+spring=cn.chenyilei.aec.spi.factory.SpringExtensionFactory
