@@ -24,18 +24,4 @@ public class ResourceLoadUtilTest {
         InputStream xxxxNo404 = ResourceLoadUtil.readFileStream("xxxxNo404");
     }
 
-    @Test
-    public void notExist() throws IOException {
-        ClassPathResource classPathResource = new ClassPathResource("easyexcel/notExist.xlsx");
-        System.err.println(classPathResource.exists());
-        String path = classPathResource.getPath();
-        System.err.println(path);
-        System.err.println(classPathResource.getURI());
-        System.err.println(classPathResource.getURL());
-        File file = classPathResource.getFile();
-//        if (!classPathResource.exists()) {
-//            classPathResource
-//        }
-
-    }
 }

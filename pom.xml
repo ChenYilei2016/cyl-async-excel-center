@@ -12,10 +12,11 @@
         <module>excel-center-common</module>
         <module>sample-test-project-easyexcel</module>
         <module>excel-center-spi</module>
-        <module>excel-center-core</module>
         <module>excel-center-start</module>
         <module>excel-center-domain</module>
         <module>excel-center-infrastructure</module>
+        <module>excel-center-application</module>
+        <module>excel-center-core</module>
     </modules>
 
 
@@ -115,4 +116,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
 </project>

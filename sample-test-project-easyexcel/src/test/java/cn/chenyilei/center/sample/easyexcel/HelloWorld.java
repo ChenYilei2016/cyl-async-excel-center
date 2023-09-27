@@ -21,7 +21,11 @@ public class HelloWorld {
      */
     @Test
     public void hello_读取行数(){
-        File file = ResourceLoadUtil.readFile("excel/demoExcel.xls");
+
+        File file = ResourceLoadUtil.readFile("classpath:excel/demoExcel.xlsx");
+
+        System.err.println(file.exists());
+        System.err.println(file.getAbsolutePath());
 
         ExcelReader excelReader = EasyExcelFactory.read(file).build();
 
