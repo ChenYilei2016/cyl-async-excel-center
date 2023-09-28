@@ -12,5 +12,5 @@ import java.util.Map;
 @FunctionalInterface
 public interface ExcelDataCallback {
 
-    void run(List<Map<Integer, Object>> cachedDataList, AnalysisContext analysisContext, AecPageReadListenerContext context);
+    void run(List<DataGroup.Item> cachedDataList, DataGroup.Data uploadData, Map<Integer, List<String>> uploadHeaderNameKeys, AnalysisContext analysisContext, AecPageReadListenerContext context);
 }

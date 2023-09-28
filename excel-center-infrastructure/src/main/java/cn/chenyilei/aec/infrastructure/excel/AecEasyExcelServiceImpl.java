@@ -6,7 +6,7 @@ import cn.chenyilei.aec.core.excel.AecPageReadListenerContext;
 import cn.chenyilei.aec.domain.excel.AecExcelService;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
-import com.alibaba.excel.read.listener.ReadListener;
+import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.google.common.collect.Lists;
@@ -23,57 +23,32 @@ import java.util.List;
 @Slf4j
 public class AecEasyExcelServiceImpl implements AecExcelService {
 
-    /**
-     * @formatter:off
-     *      FileInputStream fis = null;
-     *         try {
-     *             if (ExcelTypeEnum.CSV.equals(excelTypeEnum)) {
-     *                 CsvImportParams csvImportParams = new CsvImportParams();
-     *                 fis = new FileInputStream(excelFile);
-     *                 csvImportParams.setEncoding(encoding);
-     *                 CsvImportUtil.importCsv(fis, Map.class, csvImportParams, saveDataHandler);
-     *             } else if (ExcelTypeEnum.XSSF.equals(excelTypeEnum)) {
-     *                 //TODO 优化Excel
-     *                 fis = new FileInputStream(excelFile);
-     *                 ImportParams params = new ImportParams();
-     *                 ExcelImportUtil.importExcelBySax(fis, Map.class, params, saveDataHandler);
-     *                 //ExcelReader.readDataFromExcelAndValidateMeta(fis, ExcelType.XSSF,saveDataHandler);
-     *             }
-     *         } catch (Exception e) {
-     *             throw new CommonException(CommonErrorCode.VALIDATE_ERROR, "请检查excel版本或格式不正确,请下载模板", e);
-     *         } finally {
-     *             IOUtils.closeQuietly(fis);
-     *             if (ExcelTypeEnum.CSV.equals(excelTypeEnum)) {
-     *                 CsvExportUtil.closeExportBigExcel();
-     *             }
-     *             if (ExcelTypeEnum.XSSF.equals(excelTypeEnum)) {
-     *                 ExcelExportUtil.closeExportBigExcel();
-     *             }
-     *         }
-     * @formatter:on
-     * @param inputStream
-     */
+
     @Override
     public void readParse(InputStream inputStream, AecPageReadListenerContext readListenerContext) {
         ExcelTypeEnum excelTypeEnum = ExcelTypeUtil.recognitionExcelType(inputStream);
         ExcelReader excelReader = EasyExcel.read(inputStream).excelType(excelTypeEnum).build();
         List<ReadSheet> readSheets = excelReader.excelExecutor().sheetList();
 
-        int sheetIndex = 0;
         List<ReadSheet> sheetsNeedReads = new ArrayList<>();
         for (ReadSheet readSheet : readSheets) {
             String sheetName = readSheet.getSheetName();
-            if (sheetName != null && sheetName.startsWith("hidden_")) {
-                log.warn("ignore sheet, main:{}, sheetNo:{}, sheetName:{}", null, readSheet.getSheetNo(), sheetName);
+
+            if (!readListenerContext.getReadSheetNames().isEmpty()
+                    && !readListenerContext.getReadSheetNames().contains(sheetName)) {
+                //过滤不需要的sheet
                 continue;
             }
 
             AecPageReadListener aecPageReadListener = new AecPageReadListener(readListenerContext);
             readSheet.setCustomReadListenerList(Lists.newArrayList(aecPageReadListener));
+            readSheet.setHeadRowNumber(readListenerContext.getColumnHeaders().getHeaderRowCount(readSheet.getSheetNo()));
             excelReader.read(readSheet);
-            sheetIndex++;
             sheetsNeedReads.add(readSheet);
         }
+        /**
+         * 这里会回调{@link AecPageReadListenerContext#doBatchDataWithBizCallback(List, cn.chenyilei.aec.core.excel.DataGroup.Data, java.util.Map, AnalysisContext)}
+         */
         excelReader.read(sheetsNeedReads);
     }
 

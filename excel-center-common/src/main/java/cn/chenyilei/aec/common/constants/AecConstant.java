@@ -12,4 +12,8 @@ public interface AecConstant {
 
     String AEC_ENV_NORMAL = "normal";
 
+    String sheetNoKey = "_sheetNo";
+    String sheetNameKey = "_sheetName";
+
+    String sheetUploadHeaders = "_sheetUploadHeaders";
 }
