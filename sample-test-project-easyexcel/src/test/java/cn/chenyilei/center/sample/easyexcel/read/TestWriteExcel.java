@@ -33,7 +33,9 @@ public class TestWriteExcel {
         }
 
         IOUtils.close(excelWriter);
+
         IOUtils.copy(fastByteArrayOutputStream.getInputStream(), Files.newOutputStream(file.toPath()));
+
     }
 
     private void doOneSheet(String sheetName, ExcelWriter excelWriter) {

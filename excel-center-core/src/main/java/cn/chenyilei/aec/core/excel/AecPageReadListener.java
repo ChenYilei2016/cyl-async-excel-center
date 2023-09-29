@@ -115,7 +115,6 @@ public class AecPageReadListener extends AnalysisEventListener<Map<Integer, Obje
         String groupName = sheetName + "@" + sheetNo;
         String code = groupName + "@" + rowIndex;
         item.setCode(code);
-        item.setSheetName(sheetName);
         item.setValues(line);
 
         this.cachedDataList.add(item);
@@ -142,7 +141,7 @@ public class AecPageReadListener extends AnalysisEventListener<Map<Integer, Obje
             String groupName = sheetName + "@" + sheetNo;
             this.uploadData = new DataGroup.Data();
             this.uploadData.setCode(groupName);
-//            this.uploadData.setItems(new ArrayList<>());
+//            this.uploadData.setItems(new ArrayList<>()); // import is no
             Map<String, String> meta = new HashMap<>();
             meta.put(AecConstant.sheetNoKey, sheetNo);
             meta.put(AecConstant.sheetNameKey, sheetName);

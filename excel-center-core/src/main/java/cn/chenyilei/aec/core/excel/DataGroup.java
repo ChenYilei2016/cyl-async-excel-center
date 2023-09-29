@@ -24,9 +24,10 @@ public class DataGroup {
     @Setter
     public static class Data {
 
+        // sheetName + "@" + sheetNo;
         private String code;
 
-//        private List<Item> items;
+        private List<Item> items;
 
         private Map<String, String> meta;
     }
@@ -37,9 +38,10 @@ public class DataGroup {
     @ToString
     public static class Item {
 
+        //sheetName + "@" + sheetNo + "@" + rowNo
         private String code;
 
-        private String sheetName;
+        private String sheetNo;
 
         //field : value
         //index : value

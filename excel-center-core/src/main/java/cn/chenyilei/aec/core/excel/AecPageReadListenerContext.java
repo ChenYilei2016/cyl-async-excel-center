@@ -27,6 +27,8 @@ public class AecPageReadListenerContext {
     public AecPageReadListenerContext(ColumnHeaders columnHeaders, ExcelDataCallback callback) {
         this.callback = callback;
         this.columnHeaders = columnHeaders;
+
+        assert callback != null;
     }
 
     public void doBatchDataWithBizCallback(List<DataGroup.Item> cachedDataList, DataGroup.Data uploadData, Map<Integer, List<String>> uploadHeaderNameKeys, AnalysisContext context) {
