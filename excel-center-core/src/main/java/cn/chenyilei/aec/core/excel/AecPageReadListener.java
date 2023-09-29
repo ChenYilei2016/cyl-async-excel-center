@@ -103,6 +103,7 @@ public class AecPageReadListener extends AnalysisEventListener<Map<Integer, Obje
             }
         }
 
+        //这里添加的是 下标:value
         for (Map.Entry<Integer, Object> entry : data.entrySet()) {
             line.put(entry.getKey().toString(), entry.getValue());
         }
