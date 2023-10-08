@@ -2,8 +2,6 @@ package cn.chenyilei.aec.infrastructure.excel;
 
 import cn.chenyilei.aec.common.utils.ExcelTypeUtil;
 import cn.chenyilei.aec.core.excel.AecExcelWriter;
-import cn.chenyilei.aec.core.excel.AecPageReadListener;
-import cn.chenyilei.aec.core.excel.AecPageReadListenerContext;
 import cn.chenyilei.aec.core.model.core.ColumnHeaders;
 import cn.chenyilei.aec.domain.excel.AecExcelService;
 import cn.chenyilei.aec.domain.oss.AecOssService;
@@ -33,31 +31,8 @@ public class AecEasyExcelServiceImpl implements AecExcelService {
     private AecOssService aecOssService;
 
     @Override
-    public void readParse(InputStream inputStream, AecPageReadListenerContext readListenerContext) {
-        ExcelTypeEnum excelTypeEnum = ExcelTypeUtil.recognitionExcelType(inputStream);
-        ExcelReader excelReader = EasyExcel.read(inputStream).excelType(excelTypeEnum).build();
-        List<ReadSheet> readSheets = excelReader.excelExecutor().sheetList();
+    public void readParse(InputStream inputStream) {
 
-        List<ReadSheet> sheetsNeedReads = new ArrayList<>();
-        for (ReadSheet readSheet : readSheets) {
-            String sheetName = readSheet.getSheetName();
-
-            if (!readListenerContext.getReadSheetNames().isEmpty()
-                    && !readListenerContext.getReadSheetNames().contains(sheetName)) {
-                //过滤不需要的sheet
-                continue;
-            }
-
-            AecPageReadListener aecPageReadListener = new AecPageReadListener(readListenerContext);
-            readSheet.setCustomReadListenerList(Lists.newArrayList(aecPageReadListener));
-            readSheet.setHeadRowNumber(readListenerContext.getColumnHeaders().getHeaderRowCount(readSheet.getSheetNo()));
-            excelReader.read(readSheet);
-            sheetsNeedReads.add(readSheet);
-        }
-        /**
-         * 这里会回调{@link AecPageReadListenerContext#doBatchDataWithBizCallback(List, cn.chenyilei.aec.core.excel.DataGroup.Data, java.util.Map, AnalysisContext)}
-         */
-        excelReader.read(sheetsNeedReads);
     }
 
     /**

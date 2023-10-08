@@ -1,7 +1,5 @@
 package cn.chenyilei.aec.domain.excel;
 
-import cn.chenyilei.aec.core.excel.AecPageReadListener;
-import cn.chenyilei.aec.core.excel.AecPageReadListenerContext;
 
 import java.io.InputStream;
 
@@ -14,9 +12,10 @@ public interface AecExcelService {
     /**
      * parse
      * for each stream read
+     * and oss
      */
 
-    public void readParse(InputStream inputStream, AecPageReadListenerContext context);
+    public void readParse(InputStream inputStream);
 
 
 }

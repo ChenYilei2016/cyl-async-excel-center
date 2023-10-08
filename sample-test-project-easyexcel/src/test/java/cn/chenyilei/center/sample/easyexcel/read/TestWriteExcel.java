@@ -21,7 +21,7 @@ public class TestWriteExcel {
 
     @Test
     public void writeSheetTest() throws IOException {
-        FastByteArrayOutputStream fastByteArrayOutputStream = new FastByteArrayOutputStream();
+        FastByteArrayOutputStream fastByteArrayOutputStream = new FastByteArrayOutputStream(10240);
 
         File file = new File("src/main/resources/excel/writeExcel.xlsx");
         System.err.println(file.getAbsolutePath());
@@ -35,6 +35,7 @@ public class TestWriteExcel {
         IOUtils.close(excelWriter);
 
         IOUtils.copy(fastByteArrayOutputStream.getInputStream(), Files.newOutputStream(file.toPath()));
+
 
     }
 
@@ -52,8 +53,8 @@ public class TestWriteExcel {
         excelWriter.writeContext().currentSheet(writeSheet, WriteTypeEnum.ADD);
 
 
-        //假设查询了100次库
-        for (int i = 0; i < 30; i++) {
+        //假设查询了20次库
+        for (int i = 0; i < 20; i++) {
             // 分页去数据库查询数据 这里可以去数据库查询每一页的数据
             //每次1万数据
             excelWriter

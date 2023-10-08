@@ -1,8 +1,8 @@
 package cn.chenyilei.center.sample.easyexcel.read;
 
 import cn.chenyilei.aec.common.utils.ResourceLoadUtil;
-import cn.chenyilei.aec.core.excel.AecPageReadListener;
-import cn.chenyilei.aec.core.excel.AecPageReadListenerContext;
+import cn.chenyilei.aec.core.excel.AecExcelReader;
+import cn.chenyilei.aec.core.excel.AecExcelReaderContext;
 import cn.chenyilei.aec.core.model.core.ColumnHeaders;
 import cn.chenyilei.aec.core.model.core.impl.ColumnHeadersImpl;
 import com.alibaba.excel.EasyExcel;
@@ -24,13 +24,15 @@ public class TestPageReadExcel {
     @Test
     public void test1() {
 
-        AecPageReadListenerContext aecPageReadListenerContext = new AecPageReadListenerContext(ColumnHeadersImpl.EMPTY, (cachedDataList, uploadData, uploadHeaderNameKeys, analysisContext, context) -> {
-            System.err.println(cachedDataList);
-        });
         //page 5
-        AecPageReadListener readListener = new AecPageReadListener(5, aecPageReadListenerContext);
-        ExcelReaderBuilder read = EasyExcel.read(ResourceLoadUtil.readFile("classpath:excel/writeExcel.xlsx"), readListener);
-//        read.headRowNumber(1);
-        read.doReadAll();
+        AecExcelReaderContext aecExcelReaderContext = new AecExcelReaderContext((excelDataList, metaData, uploadHeaderNameKeys, analysisContext, aecReaderContext) -> {
+            System.err.println(excelDataList);
+        });
+        aecExcelReaderContext.setBatchCount(5);
+
+        AecExcelReader aecExcelReader = new AecExcelReader(ColumnHeadersImpl.EMPTY, aecExcelReaderContext);
+
+        aecExcelReader.readParse(ResourceLoadUtil.readFileStream("classpath:excel/demoExcel.xlsx"));
+
     }
 }
