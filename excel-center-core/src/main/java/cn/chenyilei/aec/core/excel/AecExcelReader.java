@@ -114,7 +114,7 @@ public class AecExcelReader {
         public void invoke(Map<Integer, Object> data, AnalysisContext context) {
             Map<String, Object> line = new HashMap<>(data.size() * 2);
 
-            if (columnHeaders != ColumnHeadersImpl.EMPTY) {
+            if (columnHeaders != ColumnHeaders.EMPTY) {
                 //扩展自定义header处理
                 for (Map.Entry<Integer, Object> entry : data.entrySet()) {
                     Integer column = entry.getKey();

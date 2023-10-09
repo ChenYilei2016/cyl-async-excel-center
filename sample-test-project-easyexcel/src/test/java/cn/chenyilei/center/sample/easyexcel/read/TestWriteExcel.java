@@ -3,6 +3,7 @@ package cn.chenyilei.center.sample.easyexcel.read;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.enums.WriteTypeEnum;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.builder.ExcelWriterSheetBuilder;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.google.common.collect.Lists;
@@ -26,9 +27,11 @@ public class TestWriteExcel {
         File file = new File("src/main/resources/excel/writeExcel.xlsx");
         System.err.println(file.getAbsolutePath());
 
-        ExcelWriter excelWriter = EasyExcel.write(fastByteArrayOutputStream).build();
+        ExcelWriter excelWriter = EasyExcel.write(fastByteArrayOutputStream)
+                .excelType(ExcelTypeEnum.CSV)
+                .build();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             doOneSheet("mySheet_" + i, excelWriter);
         }
 
@@ -54,7 +57,7 @@ public class TestWriteExcel {
 
 
         //假设查询了20次库
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 30; i++) {
             // 分页去数据库查询数据 这里可以去数据库查询每一页的数据
             //每次1万数据
             excelWriter

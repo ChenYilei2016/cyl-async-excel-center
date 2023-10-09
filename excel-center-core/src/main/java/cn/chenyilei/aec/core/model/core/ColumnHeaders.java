@@ -1,5 +1,8 @@
 package cn.chenyilei.aec.core.model.core;
 
+import cn.chenyilei.aec.core.model.core.impl.ColumnHeadersImpl;
+import com.google.common.collect.Lists;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,6 +10,8 @@ import java.util.List;
  * excel headers
  */
 public interface ColumnHeaders extends Serializable {
+
+    ColumnHeadersImpl EMPTY = new ColumnHeadersImpl(Lists.newArrayList());
 
     List<ColumnHeader> getColumnHeaders();
 

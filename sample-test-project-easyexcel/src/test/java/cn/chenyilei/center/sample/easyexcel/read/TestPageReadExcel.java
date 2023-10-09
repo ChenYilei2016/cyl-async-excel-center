@@ -8,6 +8,7 @@ import cn.chenyilei.aec.core.model.core.impl.ColumnHeadersImpl;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import org.junit.Test;
 
 /**
@@ -29,8 +30,9 @@ public class TestPageReadExcel {
             System.err.println(excelDataList);
         });
         aecExcelReaderContext.setBatchCount(5);
+//        aecExcelReaderContext.setReadSheetNames(Sets.newHashSet("Sheet1"));
 
-        AecExcelReader aecExcelReader = new AecExcelReader(ColumnHeadersImpl.EMPTY, aecExcelReaderContext);
+        AecExcelReader aecExcelReader = new AecExcelReader(ColumnHeaders.EMPTY, aecExcelReaderContext);
 
         aecExcelReader.readParse(ResourceLoadUtil.readFileStream("classpath:excel/demoExcel.xlsx"));
 

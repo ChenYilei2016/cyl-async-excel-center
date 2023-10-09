@@ -12,8 +12,6 @@ import java.util.*;
  */
 public class ColumnHeadersImpl implements ColumnHeaders {
 
-    public static final ColumnHeadersImpl EMPTY = new ColumnHeadersImpl(Lists.newArrayList());
-
     private static final long serialVersionUID = 6643692043129727292L;
 
     private List<ColumnHeader> columnHeaders;
