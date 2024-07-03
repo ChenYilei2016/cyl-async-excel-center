@@ -17,7 +17,6 @@
         <module>excel-center-application</module>
         <module>excel-center-core</module>
         <module>excel-center-client</module>
-        <module>extension-spi</module>
     </modules>
 
 

@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
  * @author chenyilei
  * @date 2023/09/26 16:42
  */
-public class AecAliyunOssServiceImplTest {
+public class AliyunOssServiceImplTest {
 
     @Test
     public void upload() {

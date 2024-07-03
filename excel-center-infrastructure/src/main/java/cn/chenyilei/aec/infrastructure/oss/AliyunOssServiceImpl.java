@@ -17,13 +17,13 @@ import java.util.Map;
  * @author chenyilei
  * @date 2023/09/26 15:03
  */
-public class AecAliyunOssServiceImpl implements AecOssService {
+public class AliyunOssServiceImpl implements AecOssService {
 
     private String bucketName;
 
     private OSSClient ossClient;
 
-    public AecAliyunOssServiceImpl(String endpoint, String accessKeyId, String accessKeySecret, String bucketName) {
+    public AliyunOssServiceImpl(String endpoint, String accessKeyId, String accessKeySecret, String bucketName) {
         DefaultCredentialProvider defaultCredentialProvider = CredentialsProviderFactory.newDefaultCredentialProvider(accessKeyId, accessKeySecret);
         ClientConfiguration config = new ClientConfiguration();
         this.ossClient = new OSSClient(endpoint, defaultCredentialProvider, config);

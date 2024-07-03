@@ -1,7 +1,7 @@
 package cn.chenyilei.aec.infrastructure.config;
 
 import cn.chenyilei.aec.common.constants.AecConstant;
-import cn.chenyilei.aec.infrastructure.oss.AecAliyunOssServiceImpl;
+import cn.chenyilei.aec.infrastructure.oss.AliyunOssServiceImpl;
 import cn.chenyilei.aec.infrastructure.oss.AecOssConfigProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -22,9 +22,9 @@ public class NormalDomainServiceConfiguration {
 
 
     @Bean
-    public AecAliyunOssServiceImpl aecOssService(AecOssConfigProperties aecOssConfigProperties) {
+    public AliyunOssServiceImpl aecOssService(AecOssConfigProperties aecOssConfigProperties) {
         AecOssConfigProperties.AliyunOss aliyunOss = aecOssConfigProperties.getAliyunOss();
-        AecAliyunOssServiceImpl aecAliyunOssService = new AecAliyunOssServiceImpl(
+        AliyunOssServiceImpl aecAliyunOssService = new AliyunOssServiceImpl(
                 aliyunOss.getEndpoint(),
                 aliyunOss.getAccessKeyId(),
                 aliyunOss.getAccessKeySecret(),
